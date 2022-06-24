@@ -1,6 +1,8 @@
 package edu.mta.Elearning.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.mta.Elearning.dto.UserDisplay;
 import edu.mta.Elearning.object.CtxUser;
+import edu.mta.Elearning.object.Role;
 import edu.mta.Elearning.object.User;
 import edu.mta.Elearning.service.FileUploadService;
-import edu.mta.Elearning.utils.EncrytedPasswordUtils;
 
 @Controller
 public class UserController extends BaseController {
@@ -36,6 +38,7 @@ public class UserController extends BaseController {
 			model.addAttribute("user", user);
 			model.addAttribute("UserDisplay", new UserDisplay(nv));
 			model.addAttribute("readonly", true);
+			
 			return "userPage";
 			
 		} catch (Exception e) {
@@ -52,8 +55,9 @@ public class UserController extends BaseController {
 			CtxUser ctxuser = getCtxUser();
 			
 			User user = UserMgr().findUserAccount(ctxuser.getUsername());
-			
+			List<Role> roles = RoleMgr().getRoleAll();
 			model.addAttribute("user", ctxuser);
+			model.addAttribute("ddRoles", roles);
 			model.addAttribute("UserDisplay", new UserDisplay(user));
 			model.addAttribute("readonly", false);
 			return "UserPage";
@@ -73,7 +77,7 @@ public class UserController extends BaseController {
 			CtxUser ctxUser = getCtxUser();
 			
 			User nv = UserMgr().findUserAccount(ctxUser.getUsername());
-			if(file != null &&file.getOriginalFilename()!="") {
+			if(file != null &&file.getOriginalFilename()!="" &&file.getSize()>0) {
 				String urlImg=fileUploadService.uploadFile(file,ctxUser.getUsername());
 				nv.setImgurl(urlImg);
 			}
@@ -84,16 +88,23 @@ public class UserController extends BaseController {
 			nv.setName(user.getName());
 //			nv.setPassword(EncrytedPasswordUtils.encrytePassword(user.getPassword()));
 			nv.setPhone_number(user.getPhone_number());
-			nv.setRole(user.getRole());
+			nv.setRoleId(user.getRoleId());
 			nv.setSex(user.getSex());
 			nv.setStart_date(user.getStart_date());
 			nv.setStatus(user.getStatus());
 			UserMgr().persist(nv);
 			
 			ctxUser.setUser(nv.getDbUser());
+			Map<String, Object> authorities = new HashMap<String, Object>();
+			authorities.put("/saveUser", true);
+			authorities.put("/UpdateUser", false);
+			Role role = new Role();
+			role.setName("Student");
+			role.setPermisssion(authorities);
+
+			RoleMgr().persist(role);
 			
-			
-			
+			System.out.println(role.getId());
 			return "redirect:/ViewUser";
 		} catch (Exception e) {
 			model.addAttribute("message", e);

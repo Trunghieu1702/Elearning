@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.ui.Model;
 
+import edu.mta.Elearning.mgr.RoleMgr;
 import edu.mta.Elearning.mgr.UserMgr;
 import edu.mta.Elearning.object.CtxUser;
 
@@ -19,6 +20,10 @@ public abstract class BaseController {
 	
 	protected UserMgr UserMgr() {
 		return UserMgr.get();
+	}
+	
+	protected RoleMgr RoleMgr() {
+		return RoleMgr.get();
 	}
 	
 	protected CtxUser getCtxUser() {

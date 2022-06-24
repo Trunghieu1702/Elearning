@@ -7,20 +7,21 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import edu.mta.Elearning.entity.DbRole;
 import edu.mta.Elearning.entity.DbUser;
 @SuppressWarnings("serial")
 public class CtxUser extends User implements BaseUser{
 
-	private String role;
+	private int role;
 	private String name;
 	private String email;
 	private String imgurl;
 
-	public String getRole() {
+	public int getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 
@@ -52,8 +53,8 @@ public class CtxUser extends User implements BaseUser{
 
 	private DbUser userObject;
 	
-	public CtxUser(DbUser dbUser) {
-		super(dbUser.getCode(), dbUser.getPassword(), (dbUser.getStatus()==0), true, true, true, createAuthority(dbUser));
+	public CtxUser(DbUser dbUser,DbRole dbRole) {
+		super(dbUser.getCode(), dbUser.getPassword(), (dbUser.getStatus()==0), true, true, true, createAuthority(dbUser,dbRole));
 		setUser(dbUser);
 	}
 
@@ -65,9 +66,9 @@ public class CtxUser extends User implements BaseUser{
 		this.userObject = userObject;
 	}
 
-	public static List<GrantedAuthority> createAuthority(DbUser dbNhanVien) {
+	public static List<GrantedAuthority> createAuthority(DbUser dbNhanVien,DbRole dbRole) {
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-		GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + dbNhanVien.getRole().toString());
+		GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + dbRole.getName().toString());
 		grantList.add(authority);
 		return grantList;
 	}
@@ -77,7 +78,7 @@ public class CtxUser extends User implements BaseUser{
 	public void setUser(DbUser user) {
 		userObject = user;
 		setEmail(user.getEmail());
-		setRole(user.getRole());
+		setRole(user.getRoleId());
 		setName(user.getName());
 		setImgurl(user.getImgurl());
 	}

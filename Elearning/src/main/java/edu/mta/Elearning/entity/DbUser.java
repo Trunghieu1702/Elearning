@@ -1,12 +1,17 @@
 package edu.mta.Elearning.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -55,8 +60,8 @@ public class DbUser extends BaseEntity{
 	@Column(name = "start_date")
 	private Timestamp start_date;
 
-	@Column(name = "role")
-	private String role;
+	@Column(name = "roleId")
+	private int roleId;
 
 	@Column(name = "status")
 	private int status;
@@ -66,6 +71,30 @@ public class DbUser extends BaseEntity{
 	
 	@Column(name = "imgurl")
 	private String imgurl;
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DbCboxs> cboxs = new ArrayList<DbCboxs>();
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DbContents> contents = new ArrayList<DbContents>();
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DbLogChapters> logChapters = new ArrayList<DbLogChapters>();
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DbLogSubjects> logSubjects = new ArrayList<DbLogSubjects>();
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DbLogUnits> logUnits = new ArrayList<DbLogUnits>();
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DbLogUnitTests> logunittests = new ArrayList<DbLogUnitTests>();
 	
 	public String getUserId() {
 		return user_id.toString();
@@ -149,13 +178,7 @@ public class DbUser extends BaseEntity{
 	public void setStart_date(String start_date) {
 		this.start_date = StrUtils.convertStringToTimestamp(start_date);
 	}
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 
 	public int getStatus() {
 		return status;
@@ -181,5 +204,67 @@ public class DbUser extends BaseEntity{
 		this.imgurl = imgurl;
 	}
 
-	
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public UUID getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(UUID user_id) {
+		this.user_id = user_id;
+	}
+
+	public List<DbCboxs> getCboxs() {
+		return cboxs;
+	}
+
+	public void setCboxs(List<DbCboxs> cboxs) {
+		this.cboxs = cboxs;
+	}
+
+	public List<DbContents> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<DbContents> contents) {
+		this.contents = contents;
+	}
+
+	public List<DbLogChapters> getLogChapters() {
+		return logChapters;
+	}
+
+	public void setLogChapters(List<DbLogChapters> logChapters) {
+		this.logChapters = logChapters;
+	}
+
+	public List<DbLogSubjects> getLogSubjects() {
+		return logSubjects;
+	}
+
+	public void setLogSubjects(List<DbLogSubjects> logSubjects) {
+		this.logSubjects = logSubjects;
+	}
+
+	public List<DbLogUnits> getLogUnits() {
+		return logUnits;
+	}
+
+	public void setLogUnits(List<DbLogUnits> logUnits) {
+		this.logUnits = logUnits;
+	}
+
+	public List<DbLogUnitTests> getLogunittests() {
+		return logunittests;
+	}
+
+	public void setLogunittests(List<DbLogUnitTests> logunittests) {
+		this.logunittests = logunittests;
+	}
 }

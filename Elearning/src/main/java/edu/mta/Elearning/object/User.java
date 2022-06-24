@@ -134,12 +134,12 @@ public class User extends BaseObject implements BaseUser{
 		dbUser.setStart_date(start_date);
 	}
 
-	public String getRole() {
-		return dbUser.getRole();
+	public int getRoleId() {
+		return dbUser.getRoleId();
 	}
 
-	public void setRole(String role) {
-		dbUser.setRole(role);
+	public void setRoleId(int role) {
+		dbUser.setRoleId(role);
 	}
 
 	public int getStatus() {
@@ -190,6 +190,12 @@ public class User extends BaseObject implements BaseUser{
 	
 	public boolean validateEmail() {
 		return StrUtils.isEmailAddress(getEmail());
+	}
+
+	@Override
+	public int getRole() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

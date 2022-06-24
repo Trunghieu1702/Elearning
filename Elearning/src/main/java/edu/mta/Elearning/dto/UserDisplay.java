@@ -23,7 +23,7 @@ public class UserDisplay {
 
 	private String start_date;
 
-	private String role;
+	private int role;
 
 	private int status;
 
@@ -103,11 +103,11 @@ public class UserDisplay {
 		this.start_date = start_date;
 	}
 
-	public String getRole() {
+	public int getRoleId() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRoleId(int role) {
 		this.role = role;
 	}
 
