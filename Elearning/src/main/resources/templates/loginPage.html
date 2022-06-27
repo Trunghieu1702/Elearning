@@ -1,103 +1,68 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>E Hotel</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png"
-	th:href="@{/resources/img/login/icons/favicon.ico}" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/vendor/login/bootstrap/css/bootstrap.min.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/font/login/font-awesome-4.7.0/css/font-awesome.min.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/vendor/login/animate/animate.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/vendor/login/css-hamburgers/hamburgers.min.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/vendor/login/select2/select2.min.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/css/login/util.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/resources/css/login/main.css}">
-<!--===============================================================================================-->
-</head>
-<body>
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img th:src="@{/resources/img/login/img-01.png}" alt="IMG">
-				</div>
-
-				<form class="login100-form validate-form" name='f'
-					th:action="@{/j_spring_security_check}" method='POST'>
-					<span class="login100-form-title"> Member Login </span>
-					<div th:if="${#request.getParameter('error') == 'true'}"
-						style="color: red; margin: 10px 0px;">
-						Login Failed!!!<br /> Reason : <span
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<!--begin::Head-->
+	<head><base href="../../../">
+		<title>Login</title>
+		<meta charset="utf-8" />
+		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+		<link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link th:href="@{/resources/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/resources/assets/css/style.bundle.css}" rel="stylesheet" type="text/css" />
+	</head>
+	<body id="kt_body" class="bg-body">
+		<div class="d-flex flex-column flex-root">
+			<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/sigma-1/14.png">
+				<!--begin::Content-->
+				<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+					<a href="/" class="mb-12">
+						<img alt="Logo" th:src="@{/resources/assets/media/logos/logo-1.svg}" class="h-40px" />
+					</a>
+					<div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+						<!--begin::Form-->
+						<form class="form w-100" novalidate="novalidate" name='f'
+							th:action="@{/j_spring_security_check}" method='POST'>
+							<div class="text-center mb-10">
+								<h1 class="text-dark mb-3">Sign In to ELearning</h1>
+							</div>
+							<div th:if="${#request.getParameter('error') == 'true'}" style="color: red; margin: 10px 0px;" class="fv-row mb-10">
+							Login Failed!!!<br /> Reason : <span
 							th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
 							th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
 							Static summary </span>
 
+							</div>
+							<div class="fv-row mb-10">
+								<label class="form-label fs-6 fw-bolder text-dark">User Name</label>
+								<input class="form-control form-control-lg form-control-solid" type="text" name="username" autocomplete="off" />
+							</div>
+							<div class="fv-row mb-10">
+								<div class="d-flex flex-stack mb-2">
+									<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+								</div>
+								<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+							</div>
+							<div class="text-center">
+								<button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+									<span class="indicator-label">Continue</span>
+									<span class="indicator-progress">Please wait...
+									<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+								</button>
+							</div>
+						</form>
+						<!--end::Form-->
 					</div>
-					<div class="wrap-input100 validate-input"
-						data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username"
-							placeholder="User Name" value=''> <span
-							class="focus-input100"></span> <span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
+				</div>
+				<div class="d-flex flex-center flex-column-auto p-10">
+					<div class="d-flex align-items-center fw-bold fs-6">
+						<a href="https://keenthemes.com" class="text-muted text-hover-primary px-2">About</a>
+						<a href="mailto:support@keenthemes.com" class="text-muted text-hover-primary px-2">Contact</a>
+						<a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2">Contact Us</a>
 					</div>
-
-					<div class="wrap-input100 validate-input"
-						data-validate="Password is required">
-						<input class="input100" type="password" name="password"
-							placeholder="Password"> <span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-lock"
-							aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">Login</button>
-					</div>
-
-					<!-- 					<div class="text-center p-t-12"> -->
-					<!-- 						<span class="txt1"> -->
-					<!-- 							Forgot -->
-					<!-- 						</span> -->
-					<!-- 						<a class="txt2" href="#"> -->
-					<!-- 							Username / Password? -->
-					<!-- 						</a> -->
-					<!-- 					</div> -->
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="#"> @Created by HieuHT <!-- 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
-						</a>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
-	</div>
-
-
-
-
-	<script th:src="@{/resources/vendor/login/jquery/jquery-3.2.1.min.js}"></script>
-	<script th:src="@{/resources/vendor/login/bootstrap/js/popper.js}"></script>
-	<script
-		th:src="@{/resources/vendor/login/bootstrap/js/bootstrap.min.js}"></script>
-	<script th:src="@{/resources/vendor/login/select2/select2.min.js}"></script>
-	<script th:src="@{/resources/vendor/login/tilt/tilt.jquery.min.js}"></script>
-	<script>
-		$('.js-tilt').tilt({
-			scale : 1.1
-		})
-	</script>
-
-	<script th:src="@{/resources/js/FE_login/main.js}"></script>
-
-</body>
-
+		<script>var hostUrl = "[[@{/resources/assets/}]]";</script>
+	</body>
 </html>

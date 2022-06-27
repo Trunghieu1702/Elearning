@@ -28,6 +28,20 @@ public class UserController extends BaseController {
 	@Autowired
 	protected FileUploadService fileUploadService;
 	
+	@RequestMapping(value = "/viewdemo", method = RequestMethod.GET)
+	public String ViewDemo(Model model) {
+		try {
+			CtxUser user = getCtxUser();
+			model.addAttribute("user", user);
+			return "SystemSetingPage";
+			
+		} catch (Exception e) {
+			model.addAttribute("message", e);
+			return "403Page";
+		}
+	}
+	
+	
 	@RequestMapping(value = "/ViewUser", method = RequestMethod.GET)
 	public String userPage(Model model) {
 		try {

@@ -19,6 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/resources/js/**").addResourceLocations("classpath:/static/js/");
 		registry.addResourceHandler("/resources/libs/**").addResourceLocations("classpath:/static/libs/");
 		registry.addResourceHandler("/resources/img/**").addResourceLocations("classpath:/static/img/");
+		registry.addResourceHandler("/resources/assets/**").addResourceLocations("classpath:/static/assets/");
 		
 		
 		Path avatarUploadDir = Paths.get("./Upload/Avatar");
