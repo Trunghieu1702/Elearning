@@ -15,11 +15,11 @@ import edu.mta.Elearning.object.CtxUser;
 import edu.mta.Elearning.utils.WebUtils;
 
 @Controller
-public class MainController extends BaseController{
+public class MainController extends BaseController {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String welcomePage(Model model, Principal principal) {
 		User loginedUser = (User) ((Authentication) principal).getPrincipal();
@@ -47,7 +47,7 @@ public class MainController extends BaseController{
 		} catch (Exception e) {
 			return "403Page";
 		}
-		
+
 	}
 
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)

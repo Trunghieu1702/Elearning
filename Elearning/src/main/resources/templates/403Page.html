@@ -2,6 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Access Denied</title>
+<meta charset="UTF-8">
+<!--begin::Global Stylesheets Bundle(used by all pages)-->
+<link th:href="@{/resources/assets/plugins/global/plugins.bundle.css}"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/resources/assets/css/style.bundle.css}"
+	rel="stylesheet" type="text/css" />
+<!--end::Global Stylesheets Bundle-->
 </head>
 
 <body>
@@ -10,7 +17,7 @@
 	<h3 th:if="${message != null}" th:utext="${message}"
 		style="color: red;"></h3>
 
-
+	<a id="btnEditSubmit" href="/" class="btn btn-primary" style="width: fit-content;">Đi Về Trang Chủ</a>
 </body>
 
 </html>

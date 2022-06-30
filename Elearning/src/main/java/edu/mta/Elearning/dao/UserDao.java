@@ -1,11 +1,12 @@
 package edu.mta.Elearning.dao;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import edu.mta.Elearning.entity.DbUser;
 
@@ -24,6 +25,20 @@ public class UserDao extends BaseDao{
 			query.setParameter("userName", userName);
 
 			return (DbUser) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<DbUser> getAll() {
+		try {
+			String sql = "Select e from " + DbUser.class.getName() + " e "
+					+"where e.deleteflag=0";
+
+			Query query = entityManager.createQuery(sql, DbUser.class);
+
+			return (List<DbUser>) query.getResultList();
 		} catch (NoResultException e) {
 			return null;
 		}

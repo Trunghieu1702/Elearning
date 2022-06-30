@@ -15,11 +15,9 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 
 import edu.mta.Elearning.service.UserDetailsServiceImpl;
 
-
-
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 
@@ -51,11 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
 		// Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
-		http.authorizeRequests().antMatchers("/*")
-				.access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/*").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
 		// Trang chỉ dành cho ADMIN
-		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/admin/*").access("hasRole('ROLE_ADMIN')");
 
 		// Khi người dùng đã login, với vai trò XX.
 		// Nhưng truy cập vào trang yêu cầu vai trò YY,

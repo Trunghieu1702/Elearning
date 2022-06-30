@@ -1,5 +1,8 @@
 package edu.mta.Elearning.mgr;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,6 +40,17 @@ public class UserMgr extends BaseMgr{
 		DbUser nv = userDao.findUserAccount(username);
 		if(nv==null) return new User();
 		return new User(nv);
+	}
+	
+	@SuppressWarnings("unused")
+	public List<User> getAll() {
+		List<DbUser> dbUsers = userDao.getAll();
+		List<User> users = new ArrayList<User>();
+		if(users==null) return users;
+		for (DbUser dbUser : dbUsers) {
+			users.add(new User(dbUser));
+		}
+		return users;
 	}
 	
 	public CtxUser getContextUser() {

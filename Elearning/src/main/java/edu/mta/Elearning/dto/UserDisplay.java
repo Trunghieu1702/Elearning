@@ -1,10 +1,16 @@
 package edu.mta.Elearning.dto;
 
+
+import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
+
+import org.springframework.stereotype.Component;
 
 import edu.mta.Elearning.object.User;
 
+@Component
 public class UserDisplay {
+
 	private String code;
 
 	private String name;
@@ -22,15 +28,19 @@ public class UserDisplay {
 	private String phone_number;
 
 	private String start_date;
+	
+	private Timestamp t_start_date;
 
-	private int role;
+	private int roleId;
+
+	private String strRole;
 
 	private int status;
 
 	private int deleteflag;
 
 	private String imgurl;
-	
+
 	public String getCode() {
 		return code;
 	}
@@ -104,11 +114,11 @@ public class UserDisplay {
 	}
 
 	public int getRoleId() {
-		return role;
+		return roleId;
 	}
 
 	public void setRoleId(int role) {
-		this.role = role;
+		this.roleId = role;
 	}
 
 	public int getStatus() {
@@ -126,7 +136,7 @@ public class UserDisplay {
 	public void setDeleteflag(int deleteflag) {
 		this.deleteflag = deleteflag;
 	}
-	
+
 	public String getImgurl() {
 		return imgurl;
 	}
@@ -135,26 +145,49 @@ public class UserDisplay {
 		this.imgurl = imgurl;
 	}
 
-	public UserDisplay() {}
+	public String getStrRole() {
+		return strRole;
+	}
+
+	public void setStrRole(String strRole) {
+		this.strRole = strRole;
+	}
+
 	
+	
+	public Timestamp getT_start_date() {
+		return t_start_date;
+	}
+
+	public void setT_start_date(Timestamp t_start_date) {
+		this.t_start_date = t_start_date;
+	}
+
+	public UserDisplay() {
+	}
+
 	public UserDisplay(User user) {
-		DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		this.name=user.getName();
-		this.code= user.getCode();
+//		DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("mm-dd-yyyy");
+		DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+//		DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
+		this.name = user.getName();
+		this.code = user.getCode();
 		this.address = user.getAddress();
-		this.birthday= user.getBirthday().toLocalDateTime().format(FORMATTER);
+		this.birthday = user.getBirthday().toLocalDateTime().format(FORMATTER);
 		this.email = user.getEmail();
-		this.password=user.getPassword();
-		this.phone_number=user.getPhone_number();
-		this.role=user.getRole();
-		this.sex=user.getSex();
+		this.password = user.getPassword();
+		this.phone_number = user.getPhone_number();
+		this.roleId = user.getRoleId();
+		this.sex = user.getSex();
 		this.start_date = user.getStart_date().toLocalDateTime().format(FORMATTER);
 		this.status = user.getStatus();
 		this.imgurl = user.getImgurl();
+		this.t_start_date = user.getStart_date();
 	}
 
 	public String getAvatarImagePath() {
-		if(imgurl==null||code ==null) return null;
-		return "/Upload/Avatar/"+code+"/"+imgurl;
+		if (imgurl == null || code == null)
+			return null;
+		return "/Upload/Avatar/" + code + "/" + imgurl;
 	}
 }

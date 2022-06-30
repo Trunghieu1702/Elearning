@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title th:utext="${title}"></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+<meta name="description"
+	content="This is an example dashboard created using build-in elements and components.">
+<meta name="msapplication-tap-highlight" content="no">
+<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+<link rel="shortcut icon"
+	th:href="@{/resources/assets/media/logos/favicon.ico}" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+<link
+	th:href="@{/resources/assets/plugins/custom/datatables/datatables.bundle.css}"
+	rel="stylesheet" type="text/css" />
+<!--end::Page Vendor Stylesheets-->
+<!--begin::Global Stylesheets Bundle(used by all pages)-->
+<link th:href="@{/resources/assets/plugins/global/plugins.bundle.css}"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/resources/assets/css/style.bundle.css}"
+	rel="stylesheet" type="text/css" />
+<!--end::Global Stylesheets Bundle-->
+<script th:src="@{/resources/jquery/jquery.min.js}"></script>
+<style type="text/css">
+.elementHide{
+	display:none !important;
+}
+
+</style>
+</head>
+
+<body id="kt_body"
+	style="background-image: url(/assets/media/patterns/header-bg.jpg)"
+	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+	<!--begin::Main-->
+	<!--begin::Root-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Page-->
+		<div class="page d-flex flex-row flex-column-fluid">
+			<!--begin::Wrapper-->
+			<div class="wrapper d-flex flex-column flex-row-fluid"
+				id="kt_wrapper">
+				<th:block th:include="/_menu"></th:block>
+				<div class="toolbar py-5 py-lg-15" id="kt_toolbar">
+					<!--begin::Container-->
+					<div id="kt_toolbar_container"
+						class="container-xxl d-flex flex-stack flex-wrap">
+						<!--begin::Page title-->
+						<div class="page-title d-flex flex-column me-3">
+							<!--begin::Title-->
+							<h1 class="d-flex text-white fw-bolder my-1 fs-3">Thông Tin
+								Ngươi Dùng</h1>
+							<!--end::Title-->
+						</div>
+						<!--end::Page title-->
+					</div>
+				</div>
+
+
+				<!--begin::Container-->
+				<div id="kt_content_container"
+					class="d-flex flex-column-fluid align-items-start container-xxl">
+					<!--begin::Post-->
+					<div class="content flex-row-fluid" id="kt_content">
+
+						<div
+							class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
+							<!--begin::Card-->
+							<div class="card mb-5 mb-xl-8">
+								<!--begin::Card body -->
+								<div class="card-body">
+									<form id="kt_modal_edit_user_form" class="form"
+										th:action="@{/admin/saveUser}" th:object="${UserDisplay}"
+										method="POST" enctype="multipart/form-data">
+										<!--begin::Summary-->
+										<!--begin::User Info-->
+										<div class="d-flex flex-center flex-column py-5">
+											<!--begin::Avatar-->
+											<!--begin::Image input-->
+											<div class="image-input image-input-circle"
+												data-kt-image-input="true"
+												style="background-image: url(/assets/media/svg/avatars/blank.svg)">
+												<!--begin::Image preview wrapper-->
+												<div class="image-input-wrapper w-125px h-125px"
+													th:style="'background-image: url(' +${UserDisplay.getAvatarImagePath}+')'"></div>
+												<!--end::Image preview wrapper-->
+
+												<!--begin::Edit button-->
+												<label id="btnAddAvatar"
+													class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+													data-kt-image-input-action="change"
+													data-bs-toggle="tooltip" data-bs-dismiss="click"
+													title="Change avatar"> <i
+													class="bi bi-pencil-fill fs-7"></i> <!--begin::Inputs--> <input
+													type="file" name="fileAvatar" id="fileAvatar"
+													accept=".png, .jpg, .jpeg" /> <input type="hidden"
+													name="avatar_remove" /> <!--end::Inputs-->
+												</label>
+												<!--end::Edit button-->
+
+												<!--begin::Cancel button-->
+												<span
+													class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+													data-kt-image-input-action="cancel"
+													data-bs-toggle="tooltip" data-bs-dismiss="click"
+													title="Cancel avatar"> <i class="bi bi-x fs-2"></i>
+												</span>
+												<!--end::Cancel button-->
+
+												<!--begin::Remove button-->
+												<span id="btnRemoveAvatar"
+													class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+													data-kt-image-input-action="remove"
+													data-bs-toggle="tooltip" data-bs-dismiss="click"
+													title="Remove avatar"> <i class="bi bi-x fs-2"></i>
+												</span>
+												<!--end::Remove button-->
+											</div>
+											<!--end::Image input-->
+
+
+											<!--end::Avatar-->
+											<!--begin::Name-->
+											<a href="#"
+												class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">
+												[[${UserDisplay.getName()}]]
+												</a>
+											<!--end::Name-->
+											<!--begin::Position-->
+											<div class="mb-9">
+												<!--begin::Badge-->
+												<div class="badge badge-lg badge-light-primary d-inline txtRole">
+												
+												</div>
+												<select class="mb-2 form-control fRoleId" th:field="*{roleId}">
+													<option th:each="role:${ddRoles}" th:value="${role.id}"
+														th:text="${role.name}"></option>
+												</select>
+												<!--begin::Badge-->
+											</div>
+											<!--end::Position-->
+										</div>
+										<!--end::User Info-->
+										<!--end::Summary-->
+										<!--begin::Details toggle-->
+										<div class="d-flex flex-stack fs-4 py-3">
+											<div class="fw-bolder rotate collapsible active"
+												data-bs-toggle="collapse" href="#kt_user_view_details"
+												role="button" aria-expanded="true"
+												aria-controls="kt_user_view_details">
+												Details <span class="ms-2 rotate-180"> <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+													<span class="svg-icon svg-icon-3"> <svg
+															xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+															viewBox="0 0 24 24" fill="none">
+															<path
+																d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+																fill="currentColor"></path>
+														</svg>
+												</span> <!--end::Svg Icon-->
+												</span>
+											</div>
+											<span data-bs-toggle="tooltip" data-bs-trigger="hover"
+												title=""> <a id="btnEditUser"
+												class="btn btn-sm btn-light-primary">Edit</a>
+											</span>
+										</div>
+										<!--end::Details toggle-->
+										<div class="separator"></div>
+										<!--begin::Details content-->
+										<div id="kt_user_view_details" class="collapse show" style="">
+											<div class="pb-5 fs-6">
+												<input type="hidden" th:field="*{code}">
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Họ tên</div>
+												<div class="text-gray-600">
+													<input type="text" th:field="*{name}"
+														disabled="disabled"
+														class="form-control form-control-solid mb-3 mb-lg-0">
+												</div>
+												<!--begin::Details item-->
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Email</div>
+												<div class="text-gray-600">
+													<input type="text" th:field="*{email}"
+														value="" disabled="disabled"
+														class="form-control form-control-solid mb-3 mb-lg-0">
+												</div>
+												<!--begin::Details item-->
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Địa chỉ</div>
+												<div class="text-gray-600">
+													<input type="text" th:field="*{address}"
+														value="" disabled="disabled"
+														class="form-control form-control-solid mb-3 mb-lg-0">
+												</div>
+												<!--begin::Details item-->
+												
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Ngày Sinh</div>
+												<div class="text-gray-600">
+													<input th:field="*{birthday}" type="date" class="form-control"/>
+												</div>
+												<!--begin::Details item-->
+												
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Ngày Bắt Đầu</div>
+												<div class="text-gray-600">
+													<input th:field="*{start_date}" placeholder="dd-mm-yyyy" type="date" class="form-control"/>
+												</div>
+												<!--begin::Details item-->
+												
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">số Điện Thoại</div>
+												<div class="text-gray-600">
+													<input type="text" th:field="*{phone_number}"
+														value="" disabled="disabled"
+														class="form-control form-control-solid mb-3 mb-lg-0">
+												</div>
+												<!--begin::Details item-->
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Giới Tính</div>
+												<div class="text-gray-600">
+													<select class="mb-2 form-control" th:field="*{sex}"
+														disabled="disabled">
+														<option th:value="nam" th:text="Nam" th:selected="*{sex=='nam'}">Nam</option>
+														<option th:value="nữ" th:text="Nữ" th:selected="*{sex=='nữ'}">Nữ</option>
+													</select>
+												</div>
+												<!--begin::Details item-->
+												
+												<!--begin::Details item-->
+												<div class="fw-bolder mt-5">Trạng Thái</div>
+												<div class="text-gray-600">
+													<select class="mb-2 form-control" th:field="*{status}">
+                                                        <option th:value="0" th:text="Enable" th:selected="${status==0}"></option>
+                                                        <option th:value="1" th:text="Block" th:selected="${status==1}"></option>
+                                                    </select>
+												</div>
+												<!--begin::Details item-->
+											</div>
+											<a id="btnEditCancel" class="btn btn-secondary">Cancel</a>
+											<button id="btnEditSubmit" type="submit"
+												class="btn btn-primary">Save</button>
+										</div>
+									</form>
+									<!--end::Details content-->
+								</div>
+								<!--end::Card body-->
+							</div>
+							<!--end::Card-->
+						</div>
+
+					</div>
+				</div>
+
+				<!--end::Container-->
+
+				<!--begin::Footer-->
+				<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+					<!--begin::Container-->
+					<div
+						class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
+						<!--begin::Copyright-->
+						<div class="text-dark order-2 order-md-1">
+							<span class="text-muted fw-bold me-1">2022©</span> <a
+								href="https://keenthemes.com" target="_blank"
+								class="text-gray-800 text-hover-primary">Keenthemes</a>
+						</div>
+						<!--end::Copyright-->
+						<!--begin::Menu-->
+						<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+							<li class="menu-item"><a href="https://keenthemes.com"
+								target="_blank" class="menu-link px-2">About</a></li>
+							<li class="menu-item"><a href="https://devs.keenthemes.com"
+								target="_blank" class="menu-link px-2">Support</a></li>
+							<li class="menu-item"><a
+								href="https://1.envato.market/EA4JP" target="_blank"
+								class="menu-link px-2">Purchase</a></li>
+						</ul>
+						<!--end::Menu-->
+					</div>
+					<!--end::Container-->
+				</div>
+				<!--end::Footer-->
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var hostUrl = "assets/";
+	</script>
+	<!--begin::Global Javascript Bundle(used by all pages)-->
+	<script th:src="@{/resources/assets/plugins/global/plugins.bundle.js}"></script>
+	<script th:src="@{/resources/assets/js/scripts.bundle.js}"></script>
+	<!--end::Global Javascript Bundle-->
+
+	<script th:src="@{/resources/js/jsUserDetail.js}"></script>
+
+</body>
+</html>
