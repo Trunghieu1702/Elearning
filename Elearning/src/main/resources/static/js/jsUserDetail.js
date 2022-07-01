@@ -45,4 +45,21 @@ $( document ).ready(function() {
 	$( ".fRoleId" ).change();
 	switchModeEdit(false);
 	
+	$( "#btnEditSubmit" ).on( "click", function() {
+  		Swal.fire({
+       		 text: "Thay doi cua ban da duoc luu",
+        	icon: "success",
+        	buttonsStyling: false,
+        	confirmButtonText: "Ok, toi dong y!",
+        	customClass: {
+            confirmButton: "btn btn-primary"
+        	}
+    		}).then(() => {
+  			$("#kt_modal_edit_user_form").submit();
+			});;
+	});
+	
+	
+	
 });
+

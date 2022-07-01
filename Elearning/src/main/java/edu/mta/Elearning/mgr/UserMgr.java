@@ -53,6 +53,17 @@ public class UserMgr extends BaseMgr{
 		return users;
 	}
 	
+	@SuppressWarnings("unused")
+	public List<User> getAllByCode(List<String> codes) {
+		List<DbUser> dbUsers = userDao.getAllByCode(codes);
+		List<User> users = new ArrayList<User>();
+		if(users==null) return users;
+		for (DbUser dbUser : dbUsers) {
+			users.add(new User(dbUser));
+		}
+		return users;
+	}
+	
 	public CtxUser getContextUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null) {

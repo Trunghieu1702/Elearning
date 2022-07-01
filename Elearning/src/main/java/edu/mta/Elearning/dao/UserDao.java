@@ -19,7 +19,9 @@ public class UserDao extends BaseDao{
 	public DbUser findUserAccount(String userName) {
 		try {
 			String sql = "Select e from " + DbUser.class.getName() + " e " //
-					+ " Where e.code = :userName ";
+					+ " Where e.code = :userName "
+					+ " And e.deleteflag=0"
+					+ "	And e.status =  0";
 
 			Query query = entityManager.createQuery(sql, DbUser.class);
 			query.setParameter("userName", userName);
@@ -34,9 +36,26 @@ public class UserDao extends BaseDao{
 	public List<DbUser> getAll() {
 		try {
 			String sql = "Select e from " + DbUser.class.getName() + " e "
-					+"where e.deleteflag=0";
+					+"where e.deleteflag=0"
+					+ " order by e.roleId,e.name";
 
 			Query query = entityManager.createQuery(sql, DbUser.class);
+
+			return (List<DbUser>) query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<DbUser> getAllByCode(List<String> codes) {
+		try {
+			String sql = "Select e from " + DbUser.class.getName() + " e "
+					+"where e.deleteflag=0"
+					+ " and e.code in :codes";
+
+			Query query = entityManager.createQuery(sql, DbUser.class);
+			query.setParameter("codes", codes);
 
 			return (List<DbUser>) query.getResultList();
 		} catch (NoResultException e) {

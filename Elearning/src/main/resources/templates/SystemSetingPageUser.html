@@ -49,7 +49,7 @@
 						<!--begin::Page title-->
 						<div class="page-title d-flex flex-column me-3">
 							<!--begin::Title-->
-							<h1 class="d-flex text-white fw-bolder my-1 fs-3">Systems</h1>
+							<h1 class="d-flex text-white fw-bolder my-1 fs-3">Hệ Thống</h1>
 							<!--end::Title-->
 						</div>
 						<!--end::Page title-->
@@ -104,11 +104,11 @@
 									<!--begin::Nav item-->
 									<li class="nav-item"><a
 										class="nav-link text-active-primary py-5 me-6 active"
-										href="/admin/UsersList">User</a></li>
+										href="/admin/UsersList">Người Dùng</a></li>
 									<!--end::Nav item-->
 									<!--begin::Nav item-->
 									<li class="nav-item"><a
-										class="nav-link text-active-primary py-5 me-6" href="#">Role</a>
+										class="nav-link text-active-primary py-5 me-6" href="#">Quyền</a>
 									</li>
 									<!--end::Nav item-->
 								</ul>
@@ -137,7 +137,7 @@
 										<!--end::Svg Icon-->
 										<input type="text" data-kt-user-table-filter="search"
 											class="form-control form-control-solid w-250px ps-14"
-											placeholder="Search user" />
+											placeholder="Tìm người dùng" />
 									</div>
 									<!--end::Search-->
 								</div>
@@ -161,7 +161,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											Filter
+											Bộ Lọc
 										</button>
 										<!--begin::Menu 1-->
 										<div
@@ -169,7 +169,7 @@
 											data-kt-menu="true">
 											<!--begin::Header-->
 											<div class="px-7 py-5">
-												<div class="fs-5 text-dark fw-bolder">Filter Options</div>
+												<div class="fs-5 text-dark fw-bolder">Tùy chọn bộ lọc</div>
 											</div>
 											<!--end::Header-->
 											<!--begin::Separator-->
@@ -179,9 +179,9 @@
 											<div class="px-7 py-5" data-kt-user-table-filter="form">
 												<!--begin::Input group-->
 												<div class="mb-10">
-													<label class="form-label fs-6 fw-bold">Role:</label> <select
+													<label class="form-label fs-6 fw-bold">Quyền:</label> <select
 														class="form-select form-select-solid fw-bolder"
-														data-kt-select2="true" data-placeholder="Select option"
+														data-kt-select2="true" data-placeholder="chọn tùy chọn"
 														data-allow-clear="true" data-kt-user-table-filter="role"
 														data-hide-search="true">
 														<option></option>
@@ -192,9 +192,9 @@
 												<!--end::Input group-->
 												<!--begin::Input group-->
 												<div class="mb-10">
-													<label class="form-label fs-6 fw-bold">Active:</label> <select
+													<label class="form-label fs-6 fw-bold">Trạng Thái:</label> <select
 														class="form-select form-select-solid fw-bolder"
-														data-kt-select2="true" data-placeholder="Select option"
+														data-kt-select2="true" data-placeholder="chọn tùy chọn"
 														data-allow-clear="true" data-kt-user-table-filter="active"
 														data-hide-search="true">
 														<option></option>
@@ -208,10 +208,10 @@
 													<button type="reset"
 														class="btn btn-light btn-active-light-primary fw-bold me-2 px-6"
 														data-kt-menu-dismiss="true"
-														data-kt-user-table-filter="reset">Reset</button>
+														data-kt-user-table-filter="reset">Đặi Lại</button>
 													<button type="submit" class="btn btn-primary fw-bold px-6"
 														data-kt-menu-dismiss="true"
-														data-kt-user-table-filter="filter">Apply</button>
+														data-kt-user-table-filter="filter">Áp Dụng</button>
 												</div>
 												<!--end::Actions-->
 											</div>
@@ -234,7 +234,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											Add User
+											Thêm Ngươi Dùng
 										</button>
 										<!--end::Add user-->
 									</div>
@@ -247,8 +247,10 @@
 											<span class="me-2" data-kt-user-table-select="selected_count"></span>Selected
 										</div>
 										<button type="button" class="btn btn-danger"
-											data-kt-user-table-select="delete_selected">Delete
-											Selected</button>
+											id='btnDeleteSelect'>Delete Selected</button>
+										<button type="button" class="btn btn-danger"
+											data-kt-user-table-select="delete_selected"
+											style="display: none !important;">Delete Selected</button>
 									</div>
 									<!--end::Group actions-->
 									<!--begin::Modal - Adjust Balance-->
@@ -359,7 +361,7 @@
 												<!--begin::Modal header-->
 												<div class="modal-header" id="kt_modal_add_user_header">
 													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Add User</h2>
+													<h2 class="fw-bolder">Thêm Người Dùng</h2>
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -418,12 +420,12 @@
 														value="1" />
 												</div>
 											</th>
-											<th class="min-w-125px">User</th>
-											<th class="min-w-125px">Role</th>
-											<th class="min-w-125px">Phone</th>
-											<th class="min-w-125px">Active</th>
-											<th class="min-w-125px">Joined Date</th>
-											<th class="text-end min-w-100px">Actions</th>
+											<th class="min-w-125px">Người Dùng</th>
+											<th class="min-w-125px">Quyền</th>
+											<th class="min-w-125px">Điện Thoại</th>
+											<th class="min-w-125px">Trạng Thái</th>
+											<th class="min-w-125px">Ngày Tham gia</th>
+											<th class="text-end min-w-100px">Hoạt Động</th>
 										</tr>
 										<!--end::Table row-->
 									</thead>
@@ -436,7 +438,8 @@
 											<td>
 												<div
 													class="form-check form-check-sm form-check-custom form-check-solid">
-													<input class="form-check-input" type="checkbox" value="1" />
+													<input class="form-check-input user-checked"
+														type="checkbox" value="1" th:id="${user.getCode()}" />
 												</div>
 											</td>
 											<!--end::Checkbox-->
@@ -479,7 +482,7 @@
 											<td class="text-end"><a href="#"
 												class="btn btn-light btn-active-light-primary btn-sm"
 												data-kt-menu-trigger="click"
-												data-kt-menu-placement="bottom-end">Actions <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+												data-kt-menu-placement="bottom-end">Hoạt Động <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 													<span class="svg-icon svg-icon-5 m-0"> <svg
 															xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 															viewBox="0 0 24 24" fill="none">
@@ -493,14 +496,14 @@
 													data-kt-menu="true">
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a
-															th:href="${'/admin/UsersDetail/?code='+user.getCode()}"
-															class="menu-link px-3">Edit</a>
+														<a th:href="${'/admin/UsersDetail/?code='+user.getCode()}"
+															class="menu-link px-3">Thông Tin</a>
 													</div>
 													<!--end::Menu item-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a th:href="${'/admin/deleteUser/?code='+user.getCode()}" class="menu-link px-3" >Delete</a>
+														<a th:href="${'/admin/deleteUser/?code='+user.getCode()}"
+															class="menu-link px-3">Xóa</a>
 													</div>
 													<!--end::Menu item-->
 												</div> <!--end::Menu--></td>
@@ -518,33 +521,8 @@
 				</div>
 
 				<!--end::Container-->
-
 				<!--begin::Footer-->
-				<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-					<!--begin::Container-->
-					<div
-						class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
-						<!--begin::Copyright-->
-						<div class="text-dark order-2 order-md-1">
-							<span class="text-muted fw-bold me-1">2022©</span> <a
-								href="https://keenthemes.com" target="_blank"
-								class="text-gray-800 text-hover-primary">Keenthemes</a>
-						</div>
-						<!--end::Copyright-->
-						<!--begin::Menu-->
-						<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-							<li class="menu-item"><a href="https://keenthemes.com"
-								target="_blank" class="menu-link px-2">About</a></li>
-							<li class="menu-item"><a href="https://devs.keenthemes.com"
-								target="_blank" class="menu-link px-2">Support</a></li>
-							<li class="menu-item"><a
-								href="https://1.envato.market/EA4JP" target="_blank"
-								class="menu-link px-2">Purchase</a></li>
-						</ul>
-						<!--end::Menu-->
-					</div>
-					<!--end::Container-->
-				</div>
+				<th:block th:include="/_footer.html"></th:block>
 				<!--end::Footer-->
 			</div>
 		</div>
@@ -570,6 +548,6 @@
 		th:src="@{/resources/assets/js/custom/apps/user-management/users/list/add.js}"></script>
 	<script
 		th:src="@{/resources/assets/js/custom/utilities/modals/users-search.js}"></script>
-
+	<script th:src="@{/resources/js/jsSystemUser.js}"></script>
 </body>
 </html>

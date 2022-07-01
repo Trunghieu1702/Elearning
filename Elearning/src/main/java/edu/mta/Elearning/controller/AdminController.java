@@ -1,10 +1,13 @@
 package edu.mta.Elearning.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -131,7 +134,7 @@ public class AdminController extends BaseController {
 	
 	
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-	public String deletUser(Model model, @RequestParam(name = "code", defaultValue = "") String code) {
+	public String deletUser(Model model, @RequestParam(name = "code", defaultValue = "") String code)throws Exception {
 		try {
 			CtxUser user = getCtxUser();
 			User currUser = UserMgr().findUserAccount(code);
@@ -145,6 +148,30 @@ public class AdminController extends BaseController {
 		} catch (Exception e) {
 			model.addAttribute("message", e);
 			return "403Page";
+		}
+	}
+	
+	@RequestMapping(value = "/deleteUsers", method = RequestMethod.POST)
+	public String deletUserlst(Model model,
+			@RequestParam(name = "codesDel[]", required = false) List<String> codes,
+			HttpServletResponse resp) throws Exception {
+		try {
+			
+			if(codes == null || codes.size() ==0) {
+				resp.sendError(HttpServletResponse.SC_OK, "Không tìm thấy người dùng ");
+				return "403Page";
+			}
+			List<User> users = UserMgr().getAllByCode(codes);
+			
+			for (User user : users) {
+				user.setDeleteflag(1);
+				UserMgr().persist(user);
+			}
+			resp.sendError(HttpServletResponse.SC_OK, "Xoa Thanh cong" + String.join(",", codes));
+			return "403Page";
+		} catch (Exception e) {
+			resp.sendError(HttpServletResponse.SC_FORBIDDEN, e.toString());
+			throw e;
 		}
 	}
 }
