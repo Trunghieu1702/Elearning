@@ -1,6 +1,5 @@
 package edu.mta.Elearning.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.mta.Elearning.dto.PermissionConfig;
+import edu.mta.Elearning.dto.RoleDisplay;
 import edu.mta.Elearning.dto.UserDisplay;
 import edu.mta.Elearning.object.CtxUser;
 import edu.mta.Elearning.object.Role;
@@ -60,6 +61,33 @@ public class AdminController extends BaseController {
 			model.addAttribute("readonly", true);
 			model.addAttribute("UserDisplay", new UserDisplay());
 			return "SystemSetingPageUser";
+
+		} catch (Exception e) {
+			model.addAttribute("message", e);
+			return "403Page";
+		}
+	}
+	
+	
+	@RequestMapping(value = "/RoleList", method = RequestMethod.GET)
+	public String rolePage(Model model) {
+		try {
+			// funtionTitle.put("edit", "UpdateUser");
+			GetTitle(model, "Hệ Thống", funtionTitle);
+			CtxUser user = getCtxUser();
+			List<Role> roles = RoleMgr().getRoleAll();
+			List<RoleDisplay>displays =  new ArrayList<RoleDisplay>();
+			for (Role role : roles) {
+				RoleDisplay r = new RoleDisplay(role);
+				@SuppressWarnings("unused")
+				List<PermissionConfig> p = (List<PermissionConfig>) r.getPermisssion();
+				displays.add(r);
+			}
+			
+			model.addAttribute("RoleLst", displays);
+			model.addAttribute("user", user);
+			model.addAttribute("roleDisplay", new RoleDisplay());
+			return "SystemSetingPageRole";
 
 		} catch (Exception e) {
 			model.addAttribute("message", e);
