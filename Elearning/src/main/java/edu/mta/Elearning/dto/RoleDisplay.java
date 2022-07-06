@@ -1,5 +1,8 @@
 package edu.mta.Elearning.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import edu.mta.Elearning.object.Role;
@@ -38,15 +41,32 @@ public class RoleDisplay {
 
 
 	public Object getPermisssion() {
+		if(permisssion==null) {
+			List<PermissionConfig> configs = new ArrayList<PermissionConfig>();
+			configs.add(new PermissionConfig("system","Hệ Thống"));
+			configs.add(new PermissionConfig("content","Nội Dung"));
+			configs.add(new PermissionConfig("subject","Bài Học"));
+			permisssion = configs;
+			return permisssion;
+		}
 		return permisssion;
 	}
 
 
 	public void setPermisssion(Object permisssion) {
+		if(permisssion== null) {
+			List<PermissionConfig> configs = new ArrayList<PermissionConfig>();
+			configs.add(new PermissionConfig("system","Hệ Thống"));
+			configs.add(new PermissionConfig("content","Nội Dung"));
+			configs.add(new PermissionConfig("subject","Bài Học"));
+			this.permisssion = configs;
+		}
 		this.permisssion = permisssion;
 	}
 	
-	public RoleDisplay() {}
+	public RoleDisplay() {
+		this.permisssion = getPermisssion();
+	}
 	
 	public RoleDisplay(Role role) {
 		

@@ -32,11 +32,10 @@
 
 <body id="kt_body"
 	style="background-image: url(/assets/media/patterns/header-bg.jpg)"
-	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled ">
+	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
 	<!--begin::Main-->
 	<!--begin::Root-->
-	<div
-		class="d-flex flex-column flex-root">
+	<div class="d-flex flex-column flex-root">
 		<!--begin::Page-->
 		<div class="page d-flex flex-row flex-column-fluid">
 			<!--begin::Wrapper-->
@@ -103,12 +102,12 @@
 								<ul
 									class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
 									<!--begin::Nav item-->
-									<li class="nav-item" th:if="${roleOfUser.systemuser}"><a
+									<li class="nav-item"><a
 										class="nav-link text-active-primary py-5 me-6 "
 										href="/admin/UsersList">Người Dùng</a></li>
 									<!--end::Nav item-->
 									<!--begin::Nav item-->
-									<li class="nav-item" th:if="${roleOfUser.systemrole}"><a
+									<li class="nav-item"><a
 										class="nav-link text-active-primary py-5 me-6 active"
 										href="/admin/RoleList">Quyền</a></li>
 									<!--end::Nav item-->
@@ -117,7 +116,7 @@
 							</div>
 						</div>
 
-						<div class="card  card-main overlay overlay-block" th:if="${roleOfUser.systemrole}">
+						<div class="card">
 							<!--begin::Body-->
 							<div class="card-header border-0 pt-6">
 								<div class="card-title">
@@ -192,7 +191,7 @@
 													<!--end::Modal title-->
 													<!--begin::Close-->
 													<div class="btn btn-icon btn-sm btn-active-icon-primary"
-														data-bs-dismiss="modal">
+														data-kt-users-modal-action="close">
 														<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
 														<span class="svg-icon svg-icon-1"> <svg
 																xmlns="http://www.w3.org/2000/svg" width="24"
@@ -210,7 +209,7 @@
 												</div>
 												<!--end::Modal header-->
 												<!--begin::Modal body-->
-												<div class="modal-body mx-5 mx-xl-15 my-7">
+												<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
 													<!--begin::Form-->
 													<th:block th:include="/_addRole"></th:block>
 													<!--end::Form-->
@@ -229,35 +228,7 @@
 
 
 							<!--begin::Card body-->
-							<div class="card-body py-4">
-								<!--begin::Table-->
-
-								<table class="table align-middle table-row-dashed fs-6 gy-5"
-									id="kt_datatable_role">
-									<!--begin::Table head-->
-									<thead>
-										<!--begin::Table row-->
-										<tr
-											class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-											<th class="min-w-125px">Id</th>
-											<th class="min-w-125px">Tên</th>
-											<th class="min-w-125px">Quyền hiện hành</th>
-											<th class="text-end min-w-100px">Hoạt Động</th>
-										</tr>
-										<!--end::Table row-->
-									</thead>
-									<tbody>
-
-									</tbody>
-								</table>
-								<!--end::Table-->
-							</div>
-							<div class="overlay-layer card-rounded bg-dark bg-opacity-5">
-								<div class="spinner-border text-primary" role="status">
-									<span class="visually-hidden">Loading...</span>
-								</div>
-							</div>
-
+							<div class="card-body py-4"></div>
 							<!--end::Card body-->
 						</div>
 					</div>
@@ -284,12 +255,8 @@
 		th:src="@{/resources/assets/plugins/custom/datatables/datatables.bundle.js}"></script>
 
 	<script type="text/javascript" th:inline="javascript">
-	var roleLst = [[${RoleLst}]];
 	var roleDisplay = [[${roleDisplay}]];
 	</script>
-
-	<script th:src="@{/resources/js/jsSystemRole.js}"
-		th:inline="javascript"></script>
 
 </body>
 </html>

@@ -1,6 +1,5 @@
-<form id="kt_modal_add_user_form" class="form"
-	th:action="@{/admin/saveUser}" th:object="${roleDisplay}" method="POST"
-	enctype="multipart/form-data">
+<form id="kt_modal_add_user_form" class="form" action=""
+	th:object="${roleDisplay}" method="POST" enctype="multipart/form-data">
 	<!--begin::Scroll-->
 	<div class="d-flex flex-column scroll-y me-n7 pe-7"
 		id="kt_modal_add_user_scroll" data-kt-scroll="true"
@@ -28,7 +27,7 @@
 			<label class="required fw-bold fs-6 mb-2">Quyền</label>
 			<!--end::Label-->
 			<!--begin::Input-->
-			
+
 			<!--end::Input-->
 		</div>
 		<!--end::Input group-->
@@ -37,14 +36,14 @@
 	<!--end::Scroll-->
 	<!--begin::Actions-->
 	<div class="text-center pt-15">
-		<button type="reset" class="btn btn-light me-3"
-			data-kt-users-modal-action="cancel">Đóng</button>
-		<button type="submit" class="btn btn-primary"
-			data-kt-users-modal-action="submit">
-			<span class="indicator-label">Đồng ý</span> <span
-				class="indicator-progress">Xin Chờ <span
+		<a class="btn btn-light me-3" id="btnRoleCancel"
+			data-bs-dismiss="modal">Đóng</a> <a
+			class="btn btn-primary" id="btnRoleSubmit"
+			data-kt-users-modal-action="submit"> <span
+			class="indicator-label">Đồng ý</span> <span
+			class="indicator-progress">Xin Chờ <span
 				class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-		</button>
+		</a>
 	</div>
 	<!--end::Actions-->
 </form>

@@ -17,7 +17,7 @@
 	th:href="@{/resources/assets/media/logos/favicon.ico}" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-
+<script th:src="@{/resources/js/common.js}" th:inline="javascript"></script>
 <link
 	th:href="@{/resources/assets/plugins/custom/datatables/datatables.bundle.css}"
 	rel="stylesheet" type="text/css" />
@@ -30,10 +30,9 @@
 <!--end::Global Stylesheets Bundle-->
 <script th:src="@{/resources/jquery/jquery.min.js}"></script>
 <style type="text/css">
-.elementHide{
-	display:none !important;
+.elementHide {
+	display: none !important;
 }
-
 </style>
 </head>
 
@@ -131,16 +130,17 @@
 											<!--begin::Name-->
 											<a href="#"
 												class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">
-												[[${UserDisplay.getName()}]]
-												</a>
+												[[${UserDisplay.getName()}]] </a>
 											<!--end::Name-->
 											<!--begin::Position-->
 											<div class="mb-9">
 												<!--begin::Badge-->
-												<div class="badge badge-lg badge-light-primary d-inline txtRole">
-												
+												<div
+													class="badge badge-lg badge-light-primary d-inline txtRole">
+
 												</div>
-												<select class="mb-2 form-control fRoleId" th:field="*{roleId}">
+												<select class="mb-2 form-control fRoleId"
+													th:field="*{roleId}">
 													<option th:each="role:${ddRoles}" th:value="${role.id}"
 														th:text="${role.name}"></option>
 												</select>
@@ -181,47 +181,48 @@
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Họ tên</div>
 												<div class="text-gray-600">
-													<input type="text" th:field="*{name}"
-														disabled="disabled"
+													<input type="text" th:field="*{name}" disabled="disabled"
 														class="form-control form-control-solid mb-3 mb-lg-0">
 												</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Email</div>
 												<div class="text-gray-600">
-													<input type="text" th:field="*{email}"
-														value="" disabled="disabled"
+													<input type="text" th:field="*{email}" value=""
+														disabled="disabled"
 														class="form-control form-control-solid mb-3 mb-lg-0">
 												</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Địa chỉ</div>
 												<div class="text-gray-600">
-													<input type="text" th:field="*{address}"
-														value="" disabled="disabled"
+													<input type="text" th:field="*{address}" value=""
+														disabled="disabled"
 														class="form-control form-control-solid mb-3 mb-lg-0">
 												</div>
 												<!--begin::Details item-->
-												
+
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Ngày Sinh</div>
 												<div class="text-gray-600">
-													<input th:field="*{birthday}" type="date" class="form-control"/>
+													<input th:field="*{birthday}" type="date"
+														class="form-control" />
 												</div>
 												<!--begin::Details item-->
-												
+
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Ngày Bắt Đầu</div>
 												<div class="text-gray-600">
-													<input th:field="*{start_date}" placeholder="dd-mm-yyyy" type="date" class="form-control"/>
+													<input th:field="*{start_date}" placeholder="dd-mm-yyyy"
+														type="date" class="form-control" />
 												</div>
 												<!--begin::Details item-->
-												
+
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">số Điện Thoại</div>
 												<div class="text-gray-600">
-													<input type="text" th:field="*{phone_number}"
-														value="" disabled="disabled"
+													<input type="text" th:field="*{phone_number}" value=""
+														disabled="disabled"
 														class="form-control form-control-solid mb-3 mb-lg-0">
 												</div>
 												<!--begin::Details item-->
@@ -230,25 +231,28 @@
 												<div class="text-gray-600">
 													<select class="mb-2 form-control" th:field="*{sex}"
 														disabled="disabled">
-														<option th:value="nam" th:text="Nam" th:selected="*{sex=='nam'}">Nam</option>
-														<option th:value="nữ" th:text="Nữ" th:selected="*{sex=='nữ'}">Nữ</option>
+														<option th:value="nam" th:text="Nam"
+															th:selected="*{sex=='nam'}">Nam</option>
+														<option th:value="nữ" th:text="Nữ"
+															th:selected="*{sex=='nữ'}">Nữ</option>
 													</select>
 												</div>
 												<!--begin::Details item-->
-												
+
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Trạng Thái</div>
 												<div class="text-gray-600">
 													<select class="mb-2 form-control" th:field="*{status}">
-                                                        <option th:value="0" th:text="Enable" th:selected="${status==0}"></option>
-                                                        <option th:value="1" th:text="Block" th:selected="${status==1}"></option>
-                                                    </select>
+														<option th:value="0" th:text="Enable"
+															th:selected="${status==0}"></option>
+														<option th:value="1" th:text="Block"
+															th:selected="${status==1}"></option>
+													</select>
 												</div>
 												<!--begin::Details item-->
 											</div>
-											<a id="btnEditCancel" class="btn btn-secondary">Cancel</a>
-											<a id="btnEditSubmit"
-												class="btn btn-primary">Save</a>
+											<a id="btnEditCancel" class="btn btn-secondary">Cancel</a> <a
+												id="btnEditSubmit" class="btn btn-primary">Save</a>
 										</div>
 									</form>
 									<!--end::Details content-->

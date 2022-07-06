@@ -1,0 +1,311 @@
+<!--begin::Modal - Add task-->
+<div class="modal fade" id="kt_modal_add_file" tabindex="-1"
+	aria-hidden="true">
+	<!--begin::Modal dialog-->
+	<div class="modal-dialog modal-dialog-centered mw-650px">
+		<!--begin::Modal content-->
+		<div class="modal-content">
+			<!--begin::Modal header-->
+			<div class="modal-header" id="kt_modal_add_file_header">
+				<!--begin::Modal title-->
+				<h2 class="fw-bolder">Thêm Nội Dung Mới</h2>
+				<!--end::Modal title-->
+				<!--begin::Close-->
+				<div class="btn btn-icon btn-sm btn-active-icon-primary"
+					data-bs-dismiss="modal">
+					<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+					<span class="svg-icon svg-icon-1"> <svg
+							xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+							viewBox="0 0 24 24" fill="none">
+																	<rect opacity="0.5" x="6" y="17.3137" width="16"
+								height="2" rx="1" transform="rotate(-45 6 17.3137)"
+								fill="currentColor" />
+																	<rect x="7.41422" y="6" width="16" height="2" rx="1"
+								transform="rotate(45 7.41422 6)" fill="currentColor" />
+																</svg>
+					</span>
+					<!--end::Svg Icon-->
+				</div>
+				<!--end::Close-->
+			</div>
+			<!--end::Modal header-->
+			<!--begin::Modal body-->
+			<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+				<!-- ----------------------------------------------------------------------------------------------------------- -->
+				<!--begin::Form-->
+				<form id="kt_modal_add_file_form" class="form"
+					enctype="multipart/form-data">
+					<!--begin::Scroll-->
+					<div class="d-flex flex-column scroll-y me-n7 pe-7"
+						id="kt_modal_add_file_scroll" data-kt-scroll="true"
+						data-kt-scroll-activate="{default: false, lg: true}"
+						data-kt-scroll-max-height="auto"
+						data-kt-scroll-dependencies="#kt_modal_add_file_header"
+						data-kt-scroll-wrappers="#kt_modal_add_file_scroll"
+						data-kt-scroll-offset="300px">
+
+						<div class="separator separator-content border-primary my-10">Bài-Học</div>
+						<div>
+							<a class="btn btn-primary me-3"
+								data-bs-target="#kt_modal_detail_file" data-bs-toggle="modal">
+								<!--begin::Svg Icon | path: assets/media/icons/duotune/text/txt001.svg-->
+								<span class="svg-icon svg-icon-muted svg-icon-2hx"><svg
+										xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+										viewBox="0 0 24 24" fill="none">
+										<path
+											d="M13 11H3C2.4 11 2 10.6 2 10V9C2 8.4 2.4 8 3 8H13C13.6 8 14 8.4 14 9V10C14 10.6 13.6 11 13 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z"
+											fill="currentColor" />
+										<path opacity="0.3"
+											d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM14 20V19C14 18.4 13.6 18 13 18H3C2.4 18 2 18.4 2 19V20C2 20.6 2.4 21 3 21H13C13.6 21 14 20.6 14 20Z"
+											fill="currentColor" />
+										</svg></span> <!--end::Svg Icon--> </span>Nội Dung Học Văn Bản
+							</a> <a class="btn btn-primary"
+								data-bs-target="#kt_modal_detail_file" data-bs-toggle="modal">
+								<!--begin::Svg Icon | path: assets/media/icons/duotune/text/txt001.svg-->
+								<span class="svg-icon svg-icon-muted svg-icon-2hx"><svg
+										xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+										viewBox="0 0 24 24" fill="none">
+										<path
+											d="M13 11H3C2.4 11 2 10.6 2 10V9C2 8.4 2.4 8 3 8H13C13.6 8 14 8.4 14 9V10C14 10.6 13.6 11 13 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z"
+											fill="currentColor" />
+											<path opacity="0.3"
+											d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM14 20V19C14 18.4 13.6 18 13 18H3C2.4 18 2 18.4 2 19V20C2 20.6 2.4 21 3 21H13C13.6 21 14 20.6 14 20Z"
+											fill="currentColor" />
+										</svg></span> <!--end::Svg Icon-->Nội Dung Học Pdf
+							</a>
+						</div>
+
+						<div class="separator separator-content border-danger my-10">Câu-Hỏi</div>
+						<div>
+							<a class="btn btn-danger me-3"
+								data-bs-target="#kt_modal_detail_file" data-bs-toggle="modal">
+								<span class="svg-icon svg-icon-muted svg-icon-2hx"><svg
+										xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+										viewBox="0 0 24 24" fill="none">
+			<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10"
+											fill="currentColor" />
+			<path
+											d="M11.276 13.654C11.276 13.2713 11.3367 12.9447 11.458 12.674C11.5887 12.394 11.738 12.1653 11.906 11.988C12.0833 11.8107 12.3167 11.61 12.606 11.386C12.942 11.1247 13.1893 10.896 13.348 10.7C13.5067 10.4947 13.586 10.2427 13.586 9.944C13.586 9.636 13.4833 9.356 13.278 9.104C13.082 8.84267 12.69 8.712 12.102 8.712C11.486 8.712 11.066 8.866 10.842 9.174C10.6273 9.482 10.52 9.82267 10.52 10.196L10.534 10.574H8.826C8.78867 10.3967 8.77 10.2333 8.77 10.084C8.77 9.552 8.90067 9.07133 9.162 8.642C9.42333 8.20333 9.81067 7.858 10.324 7.606C10.8467 7.354 11.4813 7.228 12.228 7.228C13.1987 7.228 13.9687 7.44733 14.538 7.886C15.1073 8.31533 15.392 8.92667 15.392 9.72C15.392 10.168 15.322 10.5507 15.182 10.868C15.042 11.1853 14.874 11.442 14.678 11.638C14.482 11.834 14.2253 12.0533 13.908 12.296C13.544 12.576 13.2733 12.8233 13.096 13.038C12.928 13.2527 12.844 13.528 12.844 13.864V14.326H11.276V13.654ZM11.192 15.222H12.928V17H11.192V15.222Z"
+											fill="currentColor" />
+			</svg></span> <!--end::Svg Icon--> Nội Dung Câu Hỏi
+							</a>
+
+						</div>
+
+
+					</div>
+					<!--end::Scroll-->
+					<!--begin::Actions-->
+					<div class=" text-center pt-15">
+						<a class="btn btn-light me-3" id="btnRoleCancel"
+							data-bs-dismiss="modal">Đóng</a>
+					</div>
+					<!--end::Actions-->
+				</form>
+
+
+
+
+
+
+				<!--end::Form-->
+			</div>
+			<!--end::Modal body-->
+		</div>
+		<!--end::Modal content-->
+	</div>
+	<!--end::Modal dialog-->
+</div>
+<!--end::Modal - Add task-->
+
+
+
+
+<!-- begin::detail content -->
+<div class="modal fade" id="kt_modal_detail_file" aria-hidden="true"
+	aria-labelledby="kt_modal_detail_file_label" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="kt_modal_detail_file_label">Modal 2</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+				<form id="kt_modal_add_file_form" class="form" action="#"
+					th:object="${roleDisplay}" method="POST"
+					enctype="multipart/form-data">
+					<!--begin::Scroll-->
+					<div class="d-flex flex-column scroll-y me-n7 pe-7"
+						id="kt_modal_add_user_scroll" data-kt-scroll="true"
+						data-kt-scroll-activate="{default: false, lg: true}"
+						data-kt-scroll-max-height="auto"
+						data-kt-scroll-dependencies="#kt_modal_add_user_header"
+						data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
+						data-kt-scroll-offset="300px">
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">Name</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="name" id="name"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+						
+						<!--begin::Input group-->
+						<div class="fv-row mb-7">
+							<!--begin::Label-->
+							<label class="required fw-bold fs-6 mb-2">test</label>
+							<!--end::Label-->
+							<!--begin::Input-->
+							<input type="text" name="test" id="test"
+								class="form-control form-control-solid mb-3 mb-lg-0"
+								placeholder="Họ Tên" value="" />
+							<!--end::Input-->
+						</div>
+						<!--end::Input group-->
+
+					</div>
+					<!--end::Scroll-->
+					<!--begin::Actions-->
+					<div class="text-center pt-15">
+						<a class="btn btn-light me-3" id="btnRoleCancel"
+							data-bs-dismiss="modal">Đóng</a>
+						<a class="btn btn-light me-3"
+							data-bs-target="#kt_modal_add_file" data-bs-toggle="modal">Quay lại</a>
+						<a class="btn btn-primary" id="btnRoleSubmit"
+							data-kt-users-modal-action="submit"> <span
+							class="indicator-label">Đồng ý</span> <span
+							class="indicator-progress">Xin Chờ <span
+								class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+						</a>
+
+					</div>
+					<!--end::Actions-->
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end::detail content -->
