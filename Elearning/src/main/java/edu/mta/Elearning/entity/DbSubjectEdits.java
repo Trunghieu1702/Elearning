@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "subjectchapters")
-public class dbSubjectEdits extends BaseEntity{
+public class DbSubjectEdits extends BaseEntity{
 	@Id
 	@Column(name = "SubjectId")
 	private int SubjectId;

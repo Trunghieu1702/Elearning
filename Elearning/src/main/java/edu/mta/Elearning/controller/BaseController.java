@@ -13,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.mta.Elearning.dto.PermissionConfig;
 import edu.mta.Elearning.dto.RoleDisplay;
 import edu.mta.Elearning.dto.SubPermissionConfig;
+import edu.mta.Elearning.mgr.CboxDepthMgr;
+import edu.mta.Elearning.mgr.CboxMgr;
 import edu.mta.Elearning.mgr.RoleMgr;
 import edu.mta.Elearning.mgr.UserMgr;
 import edu.mta.Elearning.object.CtxUser;
@@ -54,6 +56,14 @@ public abstract class BaseController {
 
 	protected RoleMgr RoleMgr() {
 		return RoleMgr.get();
+	}
+	
+	protected CboxMgr CboxMgr() {
+		return CboxMgr.get();
+	}
+	
+	protected CboxDepthMgr CboxDepthMgr() {
+		return CboxDepthMgr.get();
 	}
 
 	protected CtxUser getCtxUser() {

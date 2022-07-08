@@ -323,7 +323,7 @@
 									</div>
 									<!--end::Table header-->
 									<table class="table align-middle table-row-dashed fs-6 gy-5"
-										id="kt_datatable_role">
+										id="kt_datatable_content">
 										<!--begin::Table head-->
 										<thead>
 											<!--begin::Table row-->
@@ -336,7 +336,7 @@
 												<th class="min-w-125px">Id</th>
 												<th class="min-w-125px">Tên</th>
 												<th class="min-w-125px">Số Lần Sử Dụng</th>
-												<th class="min-w-125px">Ngày Sửa</th>
+												<th class="min-w-125px">Ngày Tao</th>
 												<th class="text-end min-w-100px">Hoạt Động</th>
 											</tr>
 											<!--end::Table row-->
@@ -373,7 +373,14 @@
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script th:src="@{/resources/assets/plugins/global/plugins.bundle.js}"></script>
 	<script th:src="@{/resources/assets/js/scripts.bundle.js}"></script>
+	<script
+		th:src="@{/resources/assets/plugins/custom/datatables/datatables.bundle.js}"></script>
 	<!--end::Global Javascript Bundle-->
+	<script type="text/javascript" th:inline="javascript">
+	var Cboxs = [[${Cboxs}]];
+	console.log(Cboxs);
+	</script>
+	
 	<script th:src="@{/resources/js/jsManagerContent.js}"
 		th:inline="javascript"></script>
 
